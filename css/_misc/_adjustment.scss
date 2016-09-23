@@ -1,0 +1,39 @@
+//ajustment vars
+
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-size: 16px;
+	line-height: 1.42;
+	-webkit-font-smoothing: antialiased;
+	background-color: #fff;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.wrapper {
+	background: $red;
+	height: 100vh;
+}
+
+li {
+	list-style: none;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 0;
+	font-weight: normal;
+
+}

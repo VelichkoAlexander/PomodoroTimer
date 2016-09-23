@@ -1,0 +1,64 @@
+@mixin box-shadow($params) {
+	box-shadow: $params;
+	-webkit-box-shadow: $params;
+	-moz-box-shadow: $params;
+}
+
+%clearfix {
+	&::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
+@mixin inlineblock($valign: top) {
+	display: inline-block;
+	vertical-align: $valign;
+}
+
+@function rem($size) {
+	$remSize: $size / 16px;
+	@return #{$remSize}rem;
+}
+
+%btn {
+	width: 56px;
+	height: 56px;
+	text-align: center;
+	//border: 2px solid #fff;
+	border: none;
+	border-radius: 56px;
+	@include inlineblock;
+	outline: none;
+	line-height: rem(52px);
+	transform: translate3d(0,0,0);
+	transition: border-radius .6s cubic-bezier(.19,1,.22,1);
+	position: relative;
+	&:before {
+		position: absolute;
+		display: block;
+		content: "";
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		border-radius: 56px;
+		cursor: pointer;
+		transition: all .6s cubic-bezier(.19,1,.22,1);
+		transition-property: opacity,border-radius,width,height;
+		box-shadow: 0 0 8px 0 rgba(0,0,0,.12),0 8px 8px 0 rgba(0,0,0,.24);
+		opacity: 1;
+	}
+	&:hover::before {
+		opacity: 0;
+	}
+	&:active::before {
+		opacity: .5;
+	}
+	&:active {
+		opacity: .8;
+	}
+
+
+}
