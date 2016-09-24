@@ -18,6 +18,11 @@
   src: url("/loftBegin/fonts/firasans-regular-webfont.woff") format("woff"), url("/loftBegin/fonts/firasans-regular-webfont.svg#fira_sansregular") format("svg");
   font-weight: normal;
   font-style: normal; }
+.setting__item::after {
+  content: '';
+  display: block;
+  clear: both; }
+
 .control__btn-start, .control__btn-reset {
   width: 56px;
   height: 56px;
@@ -451,6 +456,57 @@ textarea {
 .content {
   position: relative;
   height: 100vh; }
+
+.setting-panel {
+  position: absolute;
+  width: 33%;
+  min-width: 378px;
+  background-color: #EE4E5E;
+  top: 0;
+  bottom: 0;
+  z-index: 998; }
+
+.setting__list {
+  padding: 60px 40px;
+  color: #fff; }
+
+.setting__item {
+  margin-bottom: 10px; }
+
+.btn-wrap {
+  position: absolute;
+  padding: 20px;
+  z-index: 999; }
+
+.btn {
+  color: #fff;
+  text-align: center;
+  border-bottom: 1px dashed #fff;
+  cursor: pointer; }
+  .btn:hover {
+    border-bottom: 1px solid #fff; }
+
+.setting__btn {
+  display: inline-block;
+  vertical-align: top;
+  width: 24px;
+  height: 24px;
+  cursor: pointer; }
+
+.setting__btn--minus {
+  background: url("../images/decor/ic_remove_circle_outline_white_24px.svg") center no-repeat; }
+
+.setting__btn--plus {
+  background: url("../images/decor/ic_add_circle_outline_white_24px.svg") center no-repeat; }
+
+.setting__input-wrap {
+  float: right; }
+
+.setting__input {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  text-align: center; }
 
 .clock-panel {
   position: absolute;
