@@ -1,10 +1,12 @@
 "use strict";
-var timeSecond = 0;
-var timeRest = 0;
+var timeSecond = 3;
+var timeRest = 4;
 var countPomodoro = 0;
 var stopFlag = false;
 var restFlag = false;
 var interval;
+var wav = '../audio/Circles.mp3';
+var audio = new Audio(wav);
 var workTime = document.querySelector('.js-workTime');
 var restTime = document.querySelector('.js-restTime');
 var min = document.querySelector('.clock-panel__min');
@@ -48,16 +50,19 @@ var stopTimer = function (timerName) {
 };
 
 function updateGoal() {
+  
   if(countPomodoro >= 12){
-    goalWrapper.innerHTML = 'Отлично поработали сегодня!';
+    goalWrapper.innerHTML = 'Perfectly worked today!';
   }else {
     goalCurrent.innerHTML = countPomodoro;
   }
 }
 
 function  refreshTimer() {
-  timeSecond = workTime.value*60;
-  timeRest = restTime.value * 60;
+  // timeSecond = workTime.value*60;
+  // timeRest = restTime.value * 60;
+   timeSecond = 3;
+   timeRest = 4;
 }
 function changeTimer() {
   if (Math.floor(timeSecond / 60) < 10) {
@@ -72,6 +77,7 @@ function changeTimer() {
   }
   if (timeSecond === 0) {
     if(!restFlag){
+      audio.play();
       countPomodoro++;
       updateGoal();
       timeSecond = timeRest;
@@ -79,6 +85,7 @@ function changeTimer() {
       restFlag = true;
     } else {
       wrapper.classList.remove('wrapper--blue');
+      restFlag = false;
       refreshTimer();
     }
     stopTimer(interval);
@@ -93,4 +100,6 @@ var startTimer = function () {
     changeTimer();
   }, 1000);
 };
+
+
 

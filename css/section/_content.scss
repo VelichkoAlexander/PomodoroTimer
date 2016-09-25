@@ -1,6 +1,7 @@
 .content {
 	position: relative;
 	height: 100vh;
+	overflow: hidden;
 }
 
 .setting-panel {
@@ -10,9 +11,11 @@
 	background-color: #EE4E5E;
 	top: 0;
 	bottom: 0;
-	left: -100%;
+	left: -100vh;
 	z-index: 998;
+	box-shadow: 0 1px 16px rgba(#000, .5);
 	transition: left .5s ease;
+
 }
 
 .wrapper--blue {
