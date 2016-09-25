@@ -74,7 +74,8 @@ body {
 
 .wrapper {
   background: #ED4455;
-  height: 100vh; }
+  height: 100vh;
+  transition: background .5s ease; }
 
 li {
   list-style: none; }
@@ -464,10 +465,19 @@ textarea {
   background-color: #EE4E5E;
   top: 0;
   bottom: 0;
-  z-index: 998; }
+  left: -100%;
+  z-index: 998;
+  transition: left .5s ease; }
+
+.wrapper--blue {
+  background-color: #08B1CF;
+  transition: background .5s ease; }
+
+.open {
+  left: 0; }
 
 .setting__list {
-  padding: 60px 40px;
+  padding: 115px 40px;
   color: #fff; }
 
 .setting__item {
@@ -484,7 +494,7 @@ textarea {
   border-bottom: 1px dashed #fff;
   cursor: pointer; }
   .btn:hover {
-    border-bottom: 1px solid #fff; }
+    color: #fff; }
 
 .setting__btn {
   display: inline-block;
@@ -546,6 +556,9 @@ textarea {
 .control__btn-start {
   background: url("../images/decor/ic_play_arrow_black_24px.svg") center no-repeat #f5f5f5;
   position: relative; }
+
+.control__btn-pause {
+  background: url("../images/decor/ic_pause_black_24px.svg") center no-repeat #f5f5f5; }
 
 .control__btn-reset {
   background: url("../images/decor/ic_replay_black_24px.svg") center no-repeat #f5f5f5; }

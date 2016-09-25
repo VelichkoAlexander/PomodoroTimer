@@ -13,23 +13,23 @@
 <div class="wrapper">
 	<div class="content">
 		<div class="btn-wrap">
-			<a class="btn">
+			<a class="btn js-settings">
 				Settings
 			</a>
 		</div>
 		<div class="setting-panel">
 			<ul class="setting__list">
-				<li class="setting__item">Время работы
+				<li class="setting__item">Время работы(мин)
 					<div class="setting__input-wrap">
 						<span class="setting__btn setting__btn--minus"></span>
-						<input class="setting__input" type="number" min="0" max="100" value="25">
+						<input class="setting__input js-workTime" type="number" min="0" max="100" value="25">
 						<span class="setting__btn setting__btn--plus" ></span>
 					</div>
 				</li>
-				<li class="setting__item">Маленький перерыв
+				<li class="setting__item">Перерыв(мин)
 					<div class="setting__input-wrap">
 						<span class="setting__btn setting__btn--minus"></span>
-						<input class="setting__input" type="number" min="0" max="100" value="5">
+						<input class="setting__input js-restTime" type="number" min="0" max="100" value="5">
 						<span class="setting__btn setting__btn--plus" ></span>
 					</div>
 				</li>
@@ -38,7 +38,7 @@
 		</div>
 		<div class="clock-panel">
 			<div class="clock-panel__wrap">
-				<span class="clock-panel__min">00</span>
+				<span class="clock-panel__min">25</span>
 				<span class="clock-panel__div">:</span>
 				<span class="clock-panel__sec">00</span>
 				<div class="clock-panel__ctr">

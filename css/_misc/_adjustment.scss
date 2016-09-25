@@ -21,6 +21,7 @@ body {
 .wrapper {
 	background: $red;
 	height: 100vh;
+	transition:  background .5s ease;
 }
 
 li {
