@@ -5,7 +5,7 @@ var countPomodoro = 0;
 var stopFlag = false;
 var restFlag = false;
 var interval;
-var wav = '../audio/Circles.mp3';
+var wav = 'audio/sound.mp3';
 var audio = new Audio(wav);
 var workTime = document.querySelector('.js-workTime');
 var restTime = document.querySelector('.js-restTime');
@@ -14,13 +14,26 @@ var sec = document.querySelector('.clock-panel__sec');
 var btnSettings = document.querySelector('.js-settings');
 var btnStart = document.querySelector('.control__btn-start ');
 var btnReset = document.querySelector('.control__btn-reset');
-var goalWrapper  = document.querySelector('.goals');
+var goalWrapper = document.querySelector('.goals');
 var goalCurrent = document.querySelector('.goals__current');
 var settingsPanel = document.querySelector('.setting-panel');
 var wrapper = document.querySelector('.wrapper');
+var settingList = document.querySelector('.setting__list');
+var btnMinus = document.querySelector('.setting__btn--minus');
+setTimer();
 refreshTimer();
 updateGoal();
 changeTimer();
+
+settingList.addEventListener('click', function (evt) {
+  var target = evt.target;
+  var input = target.parentNode.querySelector('.setting__input');
+  if (target.classList.contains('setting__btn--plus') && input.value >= 0) {
+    input.value++
+  } else if (target.classList.contains('setting__btn--minus') && input.value > 0) {
+    input.value--;
+  }
+});
 
 
 btnSettings.addEventListener('click', function () {
@@ -51,18 +64,18 @@ var stopTimer = function (timerName) {
 
 function updateGoal() {
   
-  if(countPomodoro >= 12){
+  if (countPomodoro >= 12) {
     goalWrapper.innerHTML = 'Perfectly worked today!';
-  }else {
+  } else {
     goalCurrent.innerHTML = countPomodoro;
   }
 }
 
-function  refreshTimer() {
-  // timeSecond = workTime.value*60;
-  // timeRest = restTime.value * 60;
-   timeSecond = 3;
-   timeRest = 4;
+function refreshTimer() {
+  timeSecond = workTime.value * 60;
+  timeRest = restTime.value * 60;
+  // timeSecond = 3;
+  // timeRest = 4;
 }
 function changeTimer() {
   if (Math.floor(timeSecond / 60) < 10) {
@@ -76,7 +89,7 @@ function changeTimer() {
     sec.innerHTML = Math.floor(timeSecond % 60);
   }
   if (timeSecond === 0) {
-    if(!restFlag){
+    if (!restFlag) {
       audio.play();
       countPomodoro++;
       updateGoal();
@@ -93,7 +106,7 @@ function changeTimer() {
     stopFlag = true;
   }
 }
-  
+
 var startTimer = function () {
   window.interval = window.setInterval(function () {
     timeSecond--;
@@ -101,5 +114,20 @@ var startTimer = function () {
   }, 1000);
 };
 
+var saveStats = function () {
+  
+};
 
-
+function setTimer() {
+  var day = localStorage.getItem('time'),
+      dayNow = new Date().getDate();
+  if (day) {
+    if (dayNow != day) {
+      localStorage.setItem('pomodoro', 0);
+    } else {
+      countPomodoro = localStorage.getItem('pomodoro') ? localStorage.getItem('pomodoro') : 0;
+    }
+  } else {
+    localStorage.setItem('time', new Date().getDate());
+  }
+}
