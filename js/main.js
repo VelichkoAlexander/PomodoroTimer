@@ -52,6 +52,7 @@ btnStart.addEventListener('click', function () {
 
 btnReset.addEventListener('click', function () {
   btnStart.classList.remove('control__btn-pause');
+  wrapper.classList.remove('wrapper--blue');
   stopTimer(interval);
   refreshTimer();
   changeTimer();
@@ -72,10 +73,10 @@ function updateGoal() {
 }
 
 function refreshTimer() {
-  timeSecond = workTime.value * 60;
-  timeRest = restTime.value * 60;
-  // timeSecond = 3;
-  // timeRest = 4;
+  // timeSecond = workTime.value * 60;
+  // timeRest = restTime.value * 60;
+  timeSecond = 3;
+  timeRest = 4;
 }
 function changeTimer() {
   if (Math.floor(timeSecond / 60) < 10) {
@@ -92,6 +93,7 @@ function changeTimer() {
     if (!restFlag) {
       audio.play();
       countPomodoro++;
+      localStorage.setItem('pomodoro', countPomodoro);
       updateGoal();
       timeSecond = timeRest;
       wrapper.classList.add('wrapper--blue');
@@ -121,6 +123,7 @@ var saveStats = function () {
 function setTimer() {
   var day = localStorage.getItem('time'),
       dayNow = new Date().getDate();
+  localStorage.setItem('time', new Date().getDate());
   if (day) {
     if (dayNow != day) {
       localStorage.setItem('pomodoro', 0);
